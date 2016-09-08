@@ -62,16 +62,21 @@ function getUsers(urls, nodes, res) {
         },
         onDrain : function() {
             var resp = [];
-
+         
             for (var i = 0; i < nodes.length; i++) {
-                if (nodes[i].code == pages[i].entry_data.PostPage[0].media.code) {
-                    resp.push({
-                        img: nodes[i].display_src,
-                        caption: nodes[i].caption,
-                        user: pages[i].entry_data.PostPage[0].media.owner.username,
-                        fullname: pages[i].entry_data.PostPage[0].media.owner.full_name
-                    });
-                };
+
+                for (var j = 0; j < pages.length; j++) {
+                    
+                    if (nodes[i].id == pages[j].entry_data.PostPage[0].media.id) {
+                        resp.push({
+                            img: nodes[i].display_src,
+                            caption: nodes[i].caption,
+                            user: pages[j].entry_data.PostPage[0].media.owner.username,
+                            fullname: pages[j].entry_data.PostPage[0].media.owner.full_name
+                        });
+                    } 
+                }
+                
             }
 
             res.json(resp);
