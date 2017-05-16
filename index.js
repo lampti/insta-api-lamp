@@ -2,6 +2,7 @@ var Crawler = require("crawler");
 var url = require('url');
 var express = require('express');
 var cors = require('cors');
+var moment = require('moment');
 
 var app = express();
 
@@ -66,13 +67,17 @@ function getUsers(urls, nodes, res) {
             for (var i = 0; i < nodes.length; i++) {
 
                 for (var j = 0; j < pages.length; j++) {
-                    if (nodes[i].id == pages[j].entry_data.PostPage[0].graphql.shortcode_media.id) {
-                        resp.push({
-                            img: nodes[i].display_src,
-                            caption: nodes[i].caption,
-                            user: pages[j].entry_data.PostPage[0].graphql.shortcode_media.owner.username,
-                            fullname: pages[j].entry_data.PostPage[0].graphql.shortcode_media.owner.full_name
-                        });
+                    var datePost = moment.unix(pages[j].entry_data.PostPage[0].graphql.shortcode_media.taken_at_timestamp);
+                    var dateInit = moment('2017-02-01');
+                    if (datePost.isAfter(dateInit)) {
+                        if (nodes[i].id == pages[j].entry_data.PostPage[0].graphql.shortcode_media.id) {
+                            resp.push({
+                                img: nodes[i].display_src,
+                                caption: nodes[i].caption,
+                                user: pages[j].entry_data.PostPage[0].graphql.shortcode_media.owner.username,
+                                fullname: pages[j].entry_data.PostPage[0].graphql.shortcode_media.owner.full_name
+                            });
+                        }
                     }
                 }
 

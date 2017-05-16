@@ -12,6 +12,7 @@
   "dependencies": {
     "cors": "^2.8.0",
     "crawler": "^0.4.3",
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "moment": "^2.18.1"
   }
 }
