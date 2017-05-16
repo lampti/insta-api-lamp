@@ -5,7 +5,9 @@ var cors = require('cors');
 
 var app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: ['https://www.lampti.com.br']
+}));
 
 app.get('/', function (req, res) {
     var hashtag = req.query.hash;
