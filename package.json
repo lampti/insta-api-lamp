@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.0",
-    "crawler": "^0.4.3",
+    "crawler": "^1.1.1",
     "express": "^4.14.0",
     "moment": "^2.18.1"
   }
