@@ -1,6 +1,9 @@
 {
   "name": "@denner/crawler-insta",
   "version": "1.0.0",
+  "engines": {
+    "node": "v8.6.0"
+  },
   "description": "Craweler hashtag instagram",
   "main": "index.js",
   "scripts": {
